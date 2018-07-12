@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq; //language integrated query 
+using System.Text;
+using System.Threading.Tasks;
+
+namespace booksList.cs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Add or remove books to your book collection.");
+            Console.ReadKey();
+
+            List<string> bookCollection = new List<string>() { "Lord of the Rings", "Harry Potter", "Avengers" };
+
+           
+            string a = "add";
+            string x = "exit";
+            string r = "remove";
+            string userInput = ""; // needed if your declaring user input variables within the loop, just a simple "";
+
+            do
+            {
+                Console.Write("\nWhat would you like to add or remove from your collection?/nType add if you would like to add a book, remove if you would like to remove a book, or exit if you would like to exit");
+                userInput = Console.ReadLine();
+               // Console.Read();
+
+                 if (userInput == a)
+                {
+                    //prompt user
+                    Console.WriteLine("Enter the title of your book.");
+                    //get title
+                    string title = Console.ReadLine();
+                    bookCollection.Add(title); // title in parameter as it's the line you're adding, not user input as that can be any key, be specific!
+                }
+                else if (userInput == r)
+                {
+                    Console.WriteLine("Enter the title of the book you would like to remove.");
+                    string remove = Console.ReadLine();
+                    bookCollection.Remove(remove);
+                }
+                else
+                {
+                    bookCollection.ForEach(Console.WriteLine); // in Ruby, just simply puts bookcollection; // what's added is a little cheat for logging the list using a ForEach one liner 
+                    //Console.ReadLine(); No () needed for the ForEach cheat above!
+                }
+            } while (userInput != x); // true
+
+            bookCollection.Sort(); // didn't sort - need to create a string variable?---double check!!
+        }
+    }
+}
